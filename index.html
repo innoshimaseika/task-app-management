@@ -19,24 +19,15 @@
     margin: 0;
     padding: 0;
     height: 100%;
-    /* ★起動直後の一瞬だけ見える背景や、上下の安全領域(ノッチ・ホームバー分の余白)の色。
-       アプリ本体（iframeの中）のナビゲーションバーの色に合わせて白系にし、
-       「浮いた青い帯」に見えないようにする */
+    /* ★起動直後の一瞬だけ見える背景色。アプリ本体のナビゲーションバーの色に合わせて白系にする */
     background: #ffffff;
     overflow: hidden; /* 入口ページ自体はスクロールさせない（二重スクロール防止） */
   }
   body {
-    /* ★iPhoneのノッチ・ホームバー分の余白を、bodyのpaddingで確保する。
-       （以前は#app-frame側にposition:fixedのtop/left/right/bottomと
-       width/height を同時に指定していたため、ブラウザがwidth/heightを
-       優先してしまい、下側の安全領域の確保が無視され、下部が
-       ホームバーに隠れて見切れる不具合があった） */
-    padding-top: env(safe-area-inset-top, 0);
-    padding-right: env(safe-area-inset-right, 0);
-    padding-bottom: env(safe-area-inset-bottom, 0);
-    padding-left: env(safe-area-inset-left, 0);
-    box-sizing: border-box;
-    /* dvh対応ブラウザでは、アドレスバーの表示/非表示による高さ変動にも追従させる */
+    /* ★アプリ本体（iframeの中）のナビゲーションバーが、
+       ホームバー避けの余白（env(safe-area-inset-bottom)）を既に自前で持っているため、
+       ここでは余白を追加しない（追加すると二重に余白ができてしまう）。
+       dvh対応ブラウザでは、アドレスバーの表示/非表示による高さ変動にも追従させる */
     height: 100dvh;
   }
   #app-frame {
