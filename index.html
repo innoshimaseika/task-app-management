@@ -28,10 +28,7 @@
     overflow: hidden; /* 入口ページ自体はスクロールさせない（二重スクロール防止） */
   }
   body {
-    /* ★アプリ本体（iframeの中）のナビゲーションバーが、
-       ホームバー避けの余白（env(safe-area-inset-bottom)）を既に自前で持っているため、
-       ここでは余白を追加しない（追加すると二重に余白ができてしまう）。
-       dvh対応ブラウザでは、アドレスバーの表示/非表示による高さ変動にも追従させる */
+    /* GAS本体へトップレベル遷移するため、ラッパー側の余白は不要 */
     height: 100dvh;
   }
   #app-frame {
@@ -43,12 +40,12 @@
 </style>
 </head>
 <body>
-  <!-- ★ここにタスク管理アプリ本体を、常に画面いっぱいの高さで埋め込む -->
-  <iframe
-    id="app-frame"
-    src="https://script.google.com/macros/s/AKfycbzFt8Us8qRK7tpNtaoAVv3JUHpVVfEEl6oLJMsNKexKlLUkDprQ80FcRRsMHtTL1ePyZQ/exec"
-    title="タスク・スケジュール管理"
-    allow="clipboard-write"
-  ></iframe>
+  <!-- Edge等の第三者Cookie制限を避けるため、iframeではなくトップレベルで開く -->
+  <script>
+    window.location.replace('https://script.google.com/macros/s/AKfycbzFt8Us8qRK7tpNtaoAVv3JUHpVVfEEl6oLJMsNKexKlLUkDprQ80FcRRsMHtTL1ePyZQ/exec');
+  </script>
+  <noscript>
+    <a href="https://script.google.com/macros/s/AKfycbzFt8Us8qRK7tpNtaoAVv3JUHpVVfEEl6oLJMsNKexKlLUkDprQ80FcRRsMHtTL1ePyZQ/exec">タスク管理を開く</a>
+  </noscript>
 </body>
 </html>
