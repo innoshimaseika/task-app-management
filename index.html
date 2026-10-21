@@ -9,7 +9,32 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#2e5a8c">
   <meta name="mobile-web-app-capable" content="yes">
-  <script>location.replace('https://script.google.com/macros/s/AKfycbzFt8Us8qRK7tpNtaoAVv3JUHpVVfEEl6oLJMsNKexKlLUkDprQ80FcRRsMHtTL1ePyZQ/exec');</script>
+  <style>
+    html, body { margin: 0; min-height: 100%; background: #fff; }
+    body { display: grid; place-items: center; color: #2e5a8c; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { width: min(88vw, 360px); text-align: center; }
+    .mark { width: 72px; height: 72px; margin: 0 auto 18px; border-radius: 18px; }
+    h1 { margin: 0; font-size: 18px; font-weight: 700; }
+    p { margin: 10px 0 0; color: #777; font-size: 13px; }
+    a { display: inline-block; margin-top: 18px; color: #2e5a8c; font-size: 13px; }
+  </style>
 </head>
-<body></body>
+<body>
+  <main aria-live="polite">
+    <img class="mark" src="icon-192.png" alt="">
+    <h1>アプリを開いています</h1>
+    <p>自動で開かない場合は、下のリンクを押してください。</p>
+    <a id="open-app" href="https://script.google.com/macros/s/AKfycbzFt8Us8qRK7tpNtaoAVv3JUHpVVfEEl6oLJMsNKexKlLUkDprQ80FcRRsMHtTL1ePyZQ/exec">アプリを開く</a>
+  </main>
+  <script>
+    (function () {
+      var appUrl = document.getElementById('open-app').href;
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js').catch(function () {});
+      }
+      var delay = window.matchMedia('(display-mode: standalone)').matches ? 250 : 1400;
+      window.setTimeout(function () { window.location.replace(appUrl); }, delay);
+    }());
+  </script>
+</body>
 </html>
