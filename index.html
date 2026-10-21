@@ -23,7 +23,7 @@
     (function () {
       var appUrl = 'https://script.google.com/macros/s/AKfycbzFt8Us8qRK7tpNtaoAVv3JUHpVVfEEl6oLJMsNKexKlLUkDprQ80FcRRsMHtTL1ePyZQ/exec';
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js').catch(function () {});
+        navigator.serviceWorker.register('./service-worker.js?v=2').catch(function () {});
       }
       var delay = window.matchMedia('(display-mode: standalone)').matches ? 2200 : 1600;
       window.setTimeout(function () { window.location.replace(appUrl); }, delay);
