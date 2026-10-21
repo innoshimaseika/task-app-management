@@ -1,24 +1,37 @@
 {
   "name": "タスク・スケジュール管理",
   "short_name": "タスク管理",
-  "start_url": "./index.html",
-  "scope": "./",
+  "id": "https://innoshimaseika.github.io/task-app-management/",
+  "start_url": "https://innoshimaseika.github.io/task-app-management/",
+  "scope": "https://innoshimaseika.github.io/task-app-management/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#2e5a8c",
   "theme_color": "#2e5a8c",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "https://innoshimaseika.github.io/task-app-management/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "icon-512.png",
+      "src": "https://innoshimaseika.github.io/task-app-management/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "https://innoshimaseika.github.io/task-app-management/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://innoshimaseika.github.io/task-app-management/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
