@@ -4,61 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
 <title>タスク・スケジュール管理</title>
-
-<!-- ホーム画面に追加したときのアイコン・見た目の設定 -->
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<!-- ★Chromeなどのブラウザタブに表示されるアイコン（favicon）用。
-     これが無いと、manifestやapple-touch-iconがあってもタブには
-     汎用の丸アイコンが表示されてしまう。 -->
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="タスク管理">
 <meta name="theme-color" content="#2e5a8c">
-
 <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    /* ★起動直後の一瞬だけ見える背景色。アプリ本体のナビゲーションバーの色に合わせて白系にする */
-    background: #ffffff;
-    overflow: hidden; /* 入口ページ自体はスクロールさせない（二重スクロール防止） */
-  }
-  body {
-    height: 100vh;
-  }
-  @supports (height: 100lvh) {
-    body { height: 100lvh; }
-  }
-  /* Apps Scriptの警告バー（約54px）をiframeの外側で切り取る */
-  #app-viewport {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  #app-frame {
-    position: absolute;
-    top: -98px;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: calc(100% + 98px);
-    border: 0;
-  }
+  html, body { margin: 0; padding: 0; height: 100%; background: #fff; overflow: hidden; }
+  body { height: 100vh; }
+  @supports (height: 100lvh) { body { height: 100lvh; } }
+  #app-viewport { position: relative; width: 100%; height: 100%; overflow: hidden; }
+  #app-frame { position: absolute; top: -66px; left: 0; display: block; width: 100%; height: calc(100% + 66px); border: 0; }
+  #app-notice { position: absolute; z-index: 2; top: 0; left: 0; right: 0; min-height: 32px; padding: 7px 12px; color: #4b3b00; background: #fff8d7; border-bottom: 1px solid #eadb9a; font: 11px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-align: center; }
+  #app-notice strong { font-weight: 700; }
+  #app-notice details { display: inline; }
+  #app-notice summary { display: inline; margin-left: 6px; color: #6b5600; cursor: pointer; text-decoration: underline; }
+  #app-notice .notice-detail { margin: 6px auto 0; max-width: 760px; color: #5a4b16; text-align: left; }
 </style>
 </head>
 <body>
   <div id="app-viewport">
-    <iframe
-      id="app-frame"
-      src="https://script.google.com/macros/s/AKfycbzFt8Us8qRK7tpNtaoAVv3JUHpVVfEEl6oLJMsNKexKlLUkDprQ80FcRRsMHtTL1ePyZQ/exec?v=303"
-      title="タスク・スケジュール管理"
-      allow="clipboard-write"
-    ></iframe>
+    <div id="app-notice" role="note" aria-label="アプリ利用上の注意">
+      <strong>社内業務用アプリ</strong>：許可されたGoogleアカウントで認証して利用します。
+      <details>
+        <summary>利用目的・データ取扱い</summary>
+        <div class="notice-detail">
+          利用目的：社員の予定管理。<br>
+          データは管理者が指定したGoogleスプレッドシートおよびGoogle Driveに保存され、社内業務以外には利用しません。<br>
+          管理者：岡崎竜也<br>
+          問い合わせ先：因島青果株式会社 クリクラ瀬戸（0848-47-0115）<br>
+          <a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー全文</a>
+        </div>
+      </details>
+    </div>
+    <iframe id="app-frame" src="https://script.google.com/macros/s/AKfycbzFt8Us8qRK7tpNtaoAVv3JUHpVVfEEl6oLJMsNKexKlLUkDprQ80FcRRsMHtTL1ePyZQ/exec" title="タスク・スケジュール管理" allow="clipboard-write"></iframe>
   </div>
 </body>
 </html>
